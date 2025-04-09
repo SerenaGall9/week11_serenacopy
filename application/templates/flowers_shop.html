@@ -1,0 +1,32 @@
+{% extends "layout2.html" %}
+{% block body_content %}
+
+<section class="container mt-4">
+    <h1 class="mb-4">This is our offering</h1>
+
+    <div class="row font-weight-bold mb-2">
+        <div class="col-sm">ID</div>
+        <div class="col-sm">Name</div>
+        <div class="col-sm">Price £</div>
+        <div class="col-sm">Main Image</div>
+    </div>
+    <hr>
+
+    {% for product in products %}
+    <div class="row align-items-center mb-3">
+        <div class="col-sm">{{ product.ID }}</div>
+        <div class="col-sm"><strong>{{ product.name }}</strong></div>
+        <div class="col-sm">{{ product.price }}</div>
+        <div class="col-sm">
+            <img src="{{ url_for('static', filename='images/' ~ product.image_src) }}"
+                 class="img-fluid"
+                 width="50%"
+                 alt="{{ product.name }}">
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+</section>
+
+{% endblock %}
+
